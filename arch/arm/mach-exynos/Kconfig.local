@@ -1,0 +1,26 @@
+choice
+	prompt "Target Locale"
+	default TARGET_LOCALE_EUR
+
+config TARGET_LOCALE_EUR
+	bool "Europe Open"
+
+config TARGET_LOCALE_USA
+	bool "USA"
+
+endchoice
+
+choice
+	prompt "T0 Target"
+	depends on MACH_T0 && \
+		(TARGET_LOCALE_EUR || TARGET_LOCALE_USA || TARGET_LOCALE_KOR || TARGET_LOCALE_JPN || TARGET_LOCALE_CHN)
+	default MACH_T0_EUR_OPEN
+
+config MACH_T0_EUR_OPEN
+	bool "Europe Open"
+
+config MACH_T0_USA_ATT
+	bool "ATT"
+
+endchoice
+
